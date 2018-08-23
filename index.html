@@ -1,0 +1,120 @@
+---
+layout: default
+---
+
+<div class="page clearfix" index>
+    <div class="left">
+        <h1>欢迎来到CAAC CAD搜集站!</h1>
+        <!-- <small>这里搜集了历史上CAAC发布的所有CAD</small> -->
+        <hr>
+        <ul>
+            {% for post in paginator.posts %}
+              <li>
+                <h2>
+                {% assign newads = site.data.future | map: post.amendno | compact %}
+                {% if newads.size > 0 %}
+                    <s>
+                    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">[{{ post.amendno }}] [{{ post.cadno }}] {{ post.title }}</a>
+                    </s>
+                {% else %}
+                    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">[{{ post.amendno }}] [{{ post.cadno }}] {{ post.title }}</a>
+                {% endif %}
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
+                    </div>
+                    <div class="label-card">
+                        {% if post.author %}<i class="fa fa-user"></i>{{ post.author }}
+                        {% endif %}
+                    </div>
+                    <div class="label-card">
+                        {% if page.meta %}<i class="fa fa-key"></i>{{ page.meta }}  {% endif %}
+                    </div>
+
+                    <div class="label-card">
+                    {% include category.html %}
+                    </div>
+
+                    <div class="label-card">
+                    {% include tag.html %}
+                    </div>
+                </div>
+                <div class="excerpt">
+                    {{post.excerpt}}
+                </div>
+                <div class="read-all">
+                    <a  href="{{ post.url | prepend: site.baseurl }}"><i class="fa fa-newspaper-o"></i>详细内容</a>
+                </div>
+                <hr>
+              </li>
+            {% endfor %}
+        </ul>
+
+
+
+        <!-- Pagination links -->
+        <div class="pagination">
+          {% if paginator.previous_page %}
+            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
+            <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous"><i class="fa fa-angle-left"></i></a>
+          {% else %}
+            <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
+            <span class="previous disable"><i class="fa fa-angle-left"></i></span>
+          {% endif %}
+          <span class="page_number ">每页{{site.paginate}}条 第 {{ paginator.page }} 页 / 共 {{ paginator.total_pages }} 页</span>
+          {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path }}" class="next"><i class="fa fa-angle-right"></i></a>
+            <a href="{{ site.baseurl }}/page{{ paginator.total_pages }}" class="next"><i class="fa fa-angle-double-right"></i></a>
+          {% else %}
+            <span class="next disable"><i class="fa fa-angle-right"></i></span>
+            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
+          {% endif %}
+        </div>
+    </div>
+    <!-- <button class="anchor"><i class="fa fa-anchor"></i></button> -->
+    <div class="right">
+        <div class="wrap fixed">
+            <div class="side">
+                <div>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    最近发布
+                </div>
+                <ul class="content-ul" recent>
+                    {% assign nowDay = "now" | date: "%j" %}
+                    {% assign nowDayscout =  "now" | date: "%Y" | times: 365 | plus: nowDay %}
+
+                    
+                    {% for post in site.posts %}
+                        {% assign postDay = post.date | date: "%j" %}
+                        {% assign postDayscout =  post.date | date: "%Y" | times: 365 | plus: postDay %}
+                        {% assign diffdays = nowDayscout | minus: postDayscout %}
+                        {% if  diffdays <= 7  %}
+                            <li>[07]&nbsp{{ post.date | date: "%F" }}&nbsp<a href="{{ site.baseurl }}{{ post.url }}">{{ post.amendno }} {{ post.title }}</a></li>
+                        {% elsif  diffdays > 7 and diffdays <=30 %}
+                            <li>[30]&nbsp{{ post.date | date: "%F" }}&nbsp<a href="{{ site.baseurl }}{{ post.url }}">{{ post.amendno }} {{ post.title }}</a></li>
+                        {% elsif  diffdays > 30 and diffdays <=60 %}
+                            <li>[60]&nbsp{{ post.date | date: "%F" }}&nbsp<a href="{{ site.baseurl }}{{ post.url }}">{{ post.amendno }} {{ post.title }}</a></li>
+                        {% elsif  diffdays > 60 and diffdays <=90 %}
+                            <li>[90]&nbsp{{ post.date | date: "%F" }}&nbsp<a href="{{ site.baseurl }}{{ post.url }}">{{ post.amendno }} {{ post.title }}</a></li>
+                        {% else %}
+                            {% break %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">
+                <div>
+                    <i class="fa fa-external-link"></i>
+                    Links
+                </div>
+                <ul  class="content-ul">
+
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</div>
+

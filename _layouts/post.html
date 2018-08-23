@@ -1,0 +1,89 @@
+---
+layout: default
+---
+
+<div class="page clearfix" post>
+    <div class="left">
+        {% assign newads = site.data.future | map: post.amendno | compact %}
+        {% if newads.size > 0 %}
+            <s>
+            <h1>[{{page.amendno}}] [{{page.cadno}}]</br>{{page.title}}</h1>
+            </s>
+        {% else %}
+           <h1>[{{page.amendno}}] [{{page.cadno}}]</br>{{page.title}}</h1>
+        {% endif %}
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>{{ page.date | date: "%F" }}
+            </div>
+
+            <div class="label-card">
+                {% if page.author %}<i class="fa fa-user"></i>{{ page.author }}
+                {% endif %}
+            </div>
+
+            <div class="label-card">
+                {% if page.meta %}<i class="fa fa-key"></i>{{ page.meta }}  {% endif %}
+            </div>
+
+            <div class="label-card">
+            {% include category.html %}
+            </div>
+
+            <div class="label-card">
+            {% include tag.html %}
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        {{content}}
+        </article>
+        <hr>
+        {% include previousAndNext.html %}
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    相关CAD
+                </div>
+                <ul id="content-side" class="content-ul">
+    {% assign oldads = site.data.history | map: post.amendno | compact %}
+    {% for post in site.posts %}
+         {% for ad in newads %}
+              {% if post.amendno == ad %}
+                 <li>{{ post.date | date: "%F" }}&nbsp<s><s><a href="{{ site.baseurl }}{{ post.url }}">{{ post.amendno }} {{ post.title }}</a></s></li>
+              {% endif %}
+         {% endfor %}
+         {% for ad in oldads %}
+              {% if post.amendno == ad %}
+                 <li>{{ post.date | date: "%F" }}&nbsp<s><a href="{{ site.baseurl }}{{ post.url }}">{{ post.amendno }} {{ post.title }}</a></li>
+              {% endif %}
+        {% endfor %}
+    {% endfor %}
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="{{ "/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script>
