@@ -22,7 +22,10 @@ layout: default
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
+                        发布日期<i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
+                    </div>
+                    <div class="label-card">
+                        生效日期<i class="fa fa-calendar"></i>{{ post.effdate | date: "%F" }}
                     </div>
                     <div class="label-card">
                         {% if post.author %}<i class="fa fa-user"></i>{{ post.author }}
