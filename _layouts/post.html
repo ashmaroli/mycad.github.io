@@ -4,7 +4,7 @@ layout: default
 
 <div class="page clearfix" post>
     <div class="left">
-        {% assign newads = site.data.future | map: post.amendno | compact %}
+        {% assign newads = site.data.future | map: page.amendno | compact %}
         {% if newads.size > 0 %}
             <s>
             <h1>[{{page.amendno}}] [{{page.cadno}}]</br>{{page.title}}</h1>
@@ -55,7 +55,7 @@ layout: default
                     相关CAD
                 </div>
                 <ul id="content-side" class="content-ul">
-    {% assign oldads = site.data.history | map: post.amendno | compact %}
+    {% assign oldads = site.data.history | map: page.amendno | compact %}
     {% for post in site.posts %}
          {% for ad in newads %}
               {% if post.amendno == ad %}
