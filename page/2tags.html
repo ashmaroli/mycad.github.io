@@ -19,18 +19,16 @@ type: page
         {% for tag in sortedtags %}
           <h2 id="{{ tag }}">{{ tag }}</h2>
           {% for post in site.tags[tag] %}
-            <li><i class="fa fa-calendar"></i>{{ post.date | date:"%F" }} {% include category.html %} 
+            <li><i class="fa fa-calendar"></i>{{ post.date | date:"%F" }} 
                     {% assign newads = site.data.future | map: post.amendno | compact %}
                     {% if newads.size > 0 %}
                     <s>
-                    <a class="title" href="{{ post.url | prepend: site.baseurl }}">[{{post.amendno}}] [{{post.cadno}}]</a></br>
-                    <a class="titleNextline" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                    <a class="title" href="{{ post.url | prepend: site.baseurl }}">[{{post.amendno}}] [{{post.cadno}}] {{ post.title }}</a>
                     </s>
                    {% else %}
-                     <a class="title" href="{{ post.url | prepend: site.baseurl }}">[{{post.amendno}}] [{{post.cadno}}]</a></br>
-                     <a class="titleNextline" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                    <a class="title" href="{{ post.url | prepend: site.baseurl }}">[{{post.amendno}}] [{{post.cadno}}] {{ post.title }}</a>
                    {% endif %}
-
+                   {% include category.html %}
             </li>
           {% endfor %}
         {% endfor %}

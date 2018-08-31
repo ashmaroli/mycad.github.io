@@ -24,17 +24,16 @@ type: page
               {% endif %}
             {% endunless %}
 
-            <li><i class="fa fa-calendar"></i>{{ post.date | date:"%F" }}{% include category.html %}
+            <li><i class="fa fa-calendar"></i>{{ post.date | date:"%F" }}
             {% assign newads = site.data.future | map: post.amendno | compact %}
             {% if newads.size > 0 %}
                 <s>
-                <a class="title" href="{{ post.url | prepend: site.baseurl }}">[{{post.amendno}}] [{{post.cadno}}]</a>{% include tag.html %}<br>
-                <a class="titleNextline" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                <a class="title" href="{{ post.url | prepend: site.baseurl }}">[{{post.amendno}}] [{{post.cadno}}] {{ post.title }}</a>
                 </s>
             {% else %}
-                <a class="title" href="{{ post.url | prepend: site.baseurl }}">[{{post.amendno}}] [{{post.cadno}}]</a>{% include tag.html %}<br>
-                <a class="titleNextline" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                <a class="title" href="{{ post.url | prepend: site.baseurl }}">[{{post.amendno}}] [{{post.cadno}}] {{ post.title }}</a>
             {% endif %}
+            {% include category.html %}{% include tag.html %}
             </li>
 
           {% endfor %}

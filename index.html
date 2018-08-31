@@ -14,18 +14,18 @@ layout: default
                 {% assign newads = site.data.future | map: post.amendno | compact %}
                 {% if newads.size > 0 %}
                     <s>
-                    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">[{{ post.amendno }}] [{{ post.cadno }}] {{ post.title }}</a>
+                    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">[{{ post.amendno }}] [{{ post.cadno }}]</br>{{ post.title }}</a>
                     </s>
                 {% else %}
-                    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">[{{ post.amendno }}] [{{ post.cadno }}] {{ post.title }}</a>
+                    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">[{{ post.amendno }}] [{{ post.cadno }}]</br>{{ post.title }}</a>
                 {% endif %}
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        发布日期<i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
+                        发布<i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
                     </div>
                     <div class="label-card">
-                        生效日期<i class="fa fa-calendar"></i>{{ post.effdate | date: "%F" }}
+                        生效<i class="fa fa-calendar"></i>{{ post.effdate | date: "%F" }}
                     </div>
                     <div class="label-card">
                         {% if post.author %}<i class="fa fa-user"></i>{{ post.author }}
