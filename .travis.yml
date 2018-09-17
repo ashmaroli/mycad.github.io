@@ -1,7 +1,7 @@
 language: ruby
 rvm:
 - 2.4
-script: "bundle update"
-script: "jekyll update"
+script: "gem sources -a http://gems.github.com"
+script: "gem install jekyll"
 script: "jekyll -v"
 #script: "bundle exec jekyll build --verbose"
