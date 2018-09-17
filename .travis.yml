@@ -1,6 +1,7 @@
 language: ruby
 rvm:
 - 2.4
+script: "gem sources -r http://rubygems.org"
 script: "gem sources -a http://gems.github.com"
 script: "gem install jekyll"
 script: "jekyll -v"
