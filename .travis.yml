@@ -1,6 +1,4 @@
 language: ruby
 rvm:
-- 2.4
 - 2.5
-- 2.6
-script: bundle exec jekyll build --verbose --trace
+script: bundle exec jekyll build --verbose --trace --profile
