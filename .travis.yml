@@ -2,8 +2,6 @@ language: ruby
 rvm:
 - 2.4
 script: 
-- gem sources -r http://rubygems.org
-- gem sources -a http://gems.github.com
-- gem install jekyll 3.8.3
+- bundle update
 - jekyll -v
 #script: "bundle exec jekyll build --verbose"
