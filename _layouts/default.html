@@ -4,8 +4,8 @@
   <body>
     {% include header.html %}
         {{ content }}
-    {% include footer.html %}
-    {% include backToTop.html %}
+    {% include_cached footer.html %}
+    {% include_cached backToTop.html %}
     {% include_cached bodyScripts.html %}
   </body>
 </html>
