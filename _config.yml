@@ -35,6 +35,7 @@ markdown: CommonMark
 plugins:
 - jekyll-paginate
 - jekyll-commonmark
+- jekyll-include-cache
 
 # url
 category_dir: category/
