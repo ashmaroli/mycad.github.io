@@ -7,10 +7,10 @@ layout: default
         {% assign newads = site.data.future | map: page.amendno | compact %}
         {% if newads.size > 0 %}
             <s>
-            <h1>[{{page.amendno}}] [{{page.cadno}}]</br>{{page.title}}</h1>
+            <h1>[{{ page.amendno }}] [{{ page.cadno }}]<br/>{{ page.title }}</h1>
             </s>
         {% else %}
-           <h1>[{{page.amendno}}] [{{page.cadno}}]</br>{{page.title}}</h1>
+           <h1>[{{ page.amendno }}] [{{ page.cadno }}]<br/>{{ page.title }}</h1>
         {% endif %}
         <div class="label">
 
