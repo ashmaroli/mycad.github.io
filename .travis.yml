@@ -1,4 +1,4 @@
 language: ruby
 rvm:
 - 2.5
-script: git clone https://github.com/aarongustafson/aarongustafson.github.io.git --depth=2
+script: git clone https://github.com/aarongustafson/aarongustafson.github.io.git --depth=1
